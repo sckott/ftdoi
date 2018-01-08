@@ -10,8 +10,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![Build Status](https://travis-ci.org/ropensci/rpubpatterns.svg?branch=master)](https://travis-ci.org/ropensci/rpubpatterns)
-[![codecov.io](https://codecov.io/github/ropensci/rpubpatterns/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rpubpatterns?branch=master)
+[![Build Status](https://travis-ci.org/ropenscilabs/rpubpatterns.svg?branch=master)](https://travis-ci.org/ropenscilabs/rpubpatterns)
+[![codecov.io](https://codecov.io/github/ropenscilabs/rpubpatterns/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/rpubpatterns?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/rpubpatterns?color=2ECC71)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/rpubpatterns)](https://cran.r-project.org/package=rpubpatterns)
 
@@ -24,7 +24,7 @@ Development version
 
 ```{r eval=FALSE}
 install.packages("devtools")
-devtools::install_github("ropensci/rpubpatterns")
+devtools::install_github("ropenscilabs/rpubpatterns")
 ```
 
 ```{r}
@@ -43,7 +43,7 @@ pb_heartbeat()
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/rpubpatterns/issues).
+* Please [report any issues or bugs](https://github.com/ropenscilabs/rpubpatterns/issues).
 * License: MIT
 * Get citation information for `rpubpatterns` in R doing `citation(package = 'rpubpatterns')`
 * Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
