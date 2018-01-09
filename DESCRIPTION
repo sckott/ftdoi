@@ -1,7 +1,7 @@
 Package: rftdoi
 Title: Interface to the ftdoi.org API for Publisher URL Patterns
 Description: Interface to the ftdoi.org API for publisher url patterns.
-Version: 0.0.1.9110
+Version: 0.0.1.9111
 Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus+r@gmail.com>
 License: MIT + file LICENSE
