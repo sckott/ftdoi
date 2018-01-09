@@ -1,12 +1,12 @@
-Package: rpubpatterns
+Package: rftdoi
 Title: Interface to the ftdoi.org API for Publisher URL Patterns
 Description: Interface to the ftdoi.org API for publisher url patterns.
 Version: 0.0.1.9110
 Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus+r@gmail.com>
 License: MIT + file LICENSE
-URL: https://github.com/ropenscilabs/rpubpatterns
-BugReports: https://github.com/ropenscilabs/rpubpatterns/issues
+URL: https://github.com/ropenscilabs/rftdoi
+BugReports: https://github.com/ropenscilabs/rftdoi/issues
 Roxygen: list(markdown = TRUE)
 Imports:
     jsonlite (>= 1.5),

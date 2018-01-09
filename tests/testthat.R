@@ -1,2 +1,2 @@
 library("testthat")
-test_check("rpubpatterns")
+test_check("rftdoi")

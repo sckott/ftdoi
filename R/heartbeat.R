@@ -3,8 +3,8 @@
 #' @export
 #' @param ... curl options passed on to [crul::HttpClient]
 #' @examples \dontrun{
-#' pb_heartbeat()
+#' ftd_heartbeat()
 #' }
-pb_heartbeat <- function(...) {
-  json_parse(pb_GET("api/heartbeat/", ...))
+ftd_heartbeat <- function(...) {
+  json_parse(ftd_GET("api/heartbeat/", ...))
 }

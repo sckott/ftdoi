@@ -1,10 +1,10 @@
 ft_base <- function() "https://ftdoi.org"
 
 make_ua <- function() {
-  paste0("rpubpatterns/", utils::packageVersion("rpubpatterns"))
+  paste0("rftdoi/", utils::packageVersion("rftdoi"))
 }
 
-pb_GET <- function(path, args = list(), ...) {
+ftd_GET <- function(path, args = list(), ...) {
   cli <- crul::HttpClient$new(
     url = ft_base(), 
     headers = list(`User-Agent` = make_ua())

@@ -5,18 +5,18 @@
 #' gets all
 #' @param ... curl options passed on to [crul::HttpClient]
 #' @examples \dontrun{
-#' pb_prefixes()
-#' pb_prefixes(id = '10.1080')
-#' pb_prefixes(id = '10.1080', verbose = TRUE)
+#' ftd_prefixes()
+#' ftd_prefixes(id = '10.1080')
+#' ftd_prefixes(id = '10.1080', verbose = TRUE)
 #' 
 #' # doesn't work
-#' # pb_prefixes(id = '10.9999')
+#' # ftd_prefixes(id = '10.9999')
 #' }
-pb_prefixes <- function(id = NULL, ...) {
+ftd_prefixes <- function(id = NULL, ...) {
   path <- if (is.null(id)) "api/prefixes/" else sprintf("api/prefixes/%s/", id)
   if (is.null(id)) {
-    proc_many(pb_GET(path, ...))
+    proc_many(ftd_GET(path, ...))
   } else {
-    json_prx(pb_GET(path, ...))
+    json_prx(ftd_GET(path, ...))
   }
 }

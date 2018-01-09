@@ -2,8 +2,8 @@
 #' 
 #' @importFrom jsonlite fromJSON
 #' @importFrom crul HttpClient
-#' @name rpubpatterns-package
-#' @aliases rpubpatterns
+#' @name rftdoi-package
+#' @aliases rftdoi
 #' @docType package
 #' @keywords package
 NULL
