@@ -3,8 +3,9 @@ ftdoi
 
 
 
-[![codecov.io](https://codecov.io/github/ropenscilabs/ftdoi/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/ftdoi?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/ftdoi?color=2ECC71)](https://github.com/metacran/cranlogs.app)
+[![R-check](https://github.com/ropensci/ftdoi/workflows/R-check/badge.svg)](https://github.com/ropensci/ftdoi/actions?query=workflow%3AR-check)
+[![codecov](https://codecov.io/gh/ropensci/ftdoi/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/ftdoi)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/ftdoi?color=2ECC71)](https://github.com/r-hub/cranlogs.app)
 
 
 Retrieve full-text urls on a per publisher basis
