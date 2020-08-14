@@ -1,7 +1,7 @@
 ft_base <- function() "https://ftdoi.org"
 
 make_ua <- function() {
-  paste0("rftdoi/", utils::packageVersion("rftdoi"))
+  paste0("ftdoi/", utils::packageVersion("ftdoi"))
 }
 
 ftd_GET <- function(path, args = list(), ...) {

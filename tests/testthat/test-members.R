@@ -14,5 +14,5 @@ test_that("members sends email correctly", {
 test_that("members fails correctly", {
   skip_on_cran()
   
-  expect_error(ftd_members(4444), 'that member not supported yet')
+  expect_error(ftd_members(4444))
 })
