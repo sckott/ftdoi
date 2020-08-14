@@ -5,7 +5,4 @@
 \alias{rftdoi-package}
 \alias{rftdoi}
 \title{Interface to the ftdoi.org API for publisher url patterns.}
-\description{
-Interface to the ftdoi.org API for publisher url patterns.
-}
 \keyword{package}

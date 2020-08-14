@@ -1,13 +1,15 @@
-Package: rftdoi
-Title: Interface to the ftdoi.org API for Publisher URL Patterns
-Description: Interface to the ftdoi.org API for publisher url patterns.
-Version: 0.0.1.9111
+Package: ftdoi
+Title: Retrieve Full-Text URLs on a per Publisher Basis
+Description: Retrieve full-text urls on a per publisher basis.
+Version: 0.0.2.91
 Author: Scott Chamberlain [aut, cre]
-Maintainer: Scott Chamberlain <myrmecocystus+r@gmail.com>
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 License: MIT + file LICENSE
-URL: https://github.com/ropenscilabs/rftdoi
-BugReports: https://github.com/ropenscilabs/rftdoi/issues
+URL: https://github.com/ropensci/ftdoi
+BugReports: https://github.com/ropensci/ftdoi/issues
 Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
+Language: en-US
 Imports:
     jsonlite (>= 1.5),
     crul (>= 0.4.0),
@@ -16,4 +18,4 @@ Imports:
     tibble
 Suggests:
     testthat
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1
