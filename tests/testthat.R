@@ -1,2 +1,2 @@
 library("testthat")
-test_check("rftdoi")
+test_check("ftdoi")
