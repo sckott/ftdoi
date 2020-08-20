@@ -1,0 +1,55 @@
+---
+title: "ftdoi"
+author: Scott Chamberlain
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ftdoi}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+Retrieve full-text urls on a per publisher basis
+
+Docs: https://docs.ropensci.org/ftdoi/
+
+```{r eval=FALSE}
+remotes::install_github("ropenscilabs/ftdoi")
+```
+
+```{r setup}
+library(ftdoi)
+```
+
+## asdff
+
+asdfasdf
+
+```{r}
+55
+```
+
+## asdff
+
+asdfasdf
+
+```{r}
+55
+```
+
+## asdff
+
+asdfasdf
+
+```{r}
+55
+```

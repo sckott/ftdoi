@@ -1,33 +1,31 @@
 {
-  "@context": ["http://purl.org/codemeta/2.0", "http://schema.org"],
+  "@context": [
+    "http://purl.org/codemeta/2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
-  "identifier": "rftdoi",
-  "description": "Interface to the ftdoi.org API for publisher url patterns.",
-  "name": "rftdoi: Interface to the ftdoi.org API for Publisher URL Patterns",
-  "codeRepository": "https://github.com/ropenscilabs/rftdoi",
-  "issueTracker": "https://github.com/ropenscilabs/rftdoi/issues",
+  "identifier": "ftdoi",
+  "description": "Retrieve full-text urls on a per publisher basis.",
+  "name": "ftdoi: Retrieve Full-Text URLs on a per Publisher Basis",
+  "codeRepository": "https://github.com/ropensci/ftdoi",
+  "issueTracker": "https://github.com/ropensci/ftdoi/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.1.9111",
+  "version": "0.0.2.91",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.4.3",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.4.3 Patched (2018-01-01 r74017)",
-  "author": [
+  "runtimePlatform": "R version 4.0.2 Patched (2020-06-30 r78761)",
+  "author": {},
+  "maintainer": [
     {
       "@type": "Person",
       "givenName": "Scott",
-      "familyName": "Chamberlain"
+      "familyName": "Chamberlain",
+      "email": "myrmecocystus@gmail.com"
     }
   ],
-  "maintainer": {
-    "@type": "Person",
-    "givenName": "Scott",
-    "familyName": "Chamberlain",
-    "email": "myrmecocystus+r@gmail.com"
-  },
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
@@ -36,9 +34,10 @@
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
-        "name": "Central R Archive Network (CRAN)",
+        "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
-      }
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
   "softwareRequirements": [
@@ -46,25 +45,27 @@
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
-      "version": "1.5",
+      "version": ">= 1.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
-        "name": "Central R Archive Network (CRAN)",
+        "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
-      }
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "crul",
       "name": "crul",
-      "version": "0.4.0",
+      "version": ">= 0.4.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
-        "name": "Central R Archive Network (CRAN)",
+        "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
-      }
+      },
+      "sameAs": "https://CRAN.R-project.org/package=crul"
     },
     {
       "@type": "SoftwareApplication",
@@ -73,9 +74,10 @@
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
-        "name": "Central R Archive Network (CRAN)",
+        "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
-      }
+      },
+      "sameAs": "https://CRAN.R-project.org/package=fauxpas"
     },
     {
       "@type": "SoftwareApplication",
@@ -84,9 +86,10 @@
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
-        "name": "Central R Archive Network (CRAN)",
+        "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
-      }
+      },
+      "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
     {
       "@type": "SoftwareApplication",
@@ -95,12 +98,17 @@
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
-        "name": "Central R Archive Network (CRAN)",
+        "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
-      }
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
     }
   ],
-  "contIntegration": "https://travis-ci.org/ropenscilabs/rftdoi",
-  "readme": "https://github.com/ropenscilabs/rftdoi/blob/master/README.md",
-  "fileSize": "3.901KB"
+  "contIntegration": "https://codecov.io/gh/ropensci/ftdoi",
+  "readme": "https://github.com/ropensci/ftdoi/blob/master/README.md",
+  "fileSize": "0KB",
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "keywords": ["doi", "rstats", "r", "r-package"]
 }

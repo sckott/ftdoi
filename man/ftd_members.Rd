@@ -4,20 +4,18 @@
 \alias{ftd_members}
 \title{Members}
 \usage{
-ftd_members(id = NULL, ...)
+ftd_members(id = NULL)
 }
 \arguments{
 \item{id}{(character) a Crossref member ID. Default is \code{NULL} which
 gets all members}
-
-\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Members
 }
 \examples{
 \dontrun{
-df <- ftd_members()
+ftd_members()
 ftd_members(221)
 ftd_members(1965)
 

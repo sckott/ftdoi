@@ -4,15 +4,24 @@ make_ua <- function() {
   paste0("ftdoi/", utils::packageVersion("ftdoi"))
 }
 
-ftd_GET <- function(path, args = list(), ...) {
+ftd_GET <- function(url, args = list(), ...) {
   cli <- crul::HttpClient$new(
-    url = ft_base(), 
+    url = url,
+    # url = ft_base(), 
     headers = list(`User-Agent` = make_ua())
     #opts = list(...)
   )
-  res <- cli$get(path, query = args)
+  res <- cli$get(query = args)
   errs(res)
   res$parse("UTF-8")
+}
+
+ftd_GET_zip <- function(url, ...) {
+  ftdoi_cache$mkdir()
+  con <- crul::HttpClient$new(url = url, opts = list(...))
+  res <- con$get(
+    disk = file.path(ftdoi_cache$cache_path_get(), "pubpatterns.zip"))
+  res$raise_for_status()
 }
 
 errs <- function(x) {

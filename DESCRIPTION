@@ -15,7 +15,13 @@ Imports:
     crul (>= 0.4.0),
     fauxpas,
     data.table,
-    tibble
+    tibble,
+    hoardr,
+    storr,
+    rcrossref
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr
