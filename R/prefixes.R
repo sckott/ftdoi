@@ -7,16 +7,34 @@
 #' @examples \dontrun{
 #' ftd_prefixes()
 #' ftd_prefixes(id = '10.1080')
-#' ftd_prefixes(id = '10.1080', verbose = TRUE)
 #' 
 #' # doesn't work
 #' # ftd_prefixes(id = '10.9999')
 #' }
 ftd_prefixes <- function(id = NULL, ...) {
-  path <- if (is.null(id)) "api/prefixes/" else sprintf("api/prefixes/%s/", id)
-  if (is.null(id)) {
-    proc_many(ftd_GET(path, ...))
-  } else {
-    json_prx(ftd_GET(path, ...))
-  }
+  assert(id, "character")
+  if (is.null(id)) all_prefixes() else a_prefix(id)
+}
+
+prefix_map <- list(
+  "10.1080" = list(
+    "name" = "cogent",
+    "path" = "cogent.json"
+  ),
+  "10.2139" = list(
+    "name" = "ssrn",
+    "path" = "ssrn.json"
+  )
+)
+all_prefixes <- function(id) {
+  paths <- vapply(prefix_map, "[[", "", "path")
+  lapply(file.path(ftdoi_cache$cache_path_get(), paths), jsonlite::fromJSON)
+}
+a_prefix <- function(id) {
+  x <- prefix_map[as.character(id)]
+  if (is.null(x[[1]])) 
+    stop('not a DOI prefix or not supported yet', call.=FALSE)
+  path <- file.path(ftdoi_cache$cache_path_get(), x[[1]]$path)
+  if (!file.exists(path)) stop(paste(path, ' does not exist'), call.=FALSE)
+  jsonlite::fromJSON(path)
 }

@@ -19,7 +19,6 @@ Prefixes
 \dontrun{
 ftd_prefixes()
 ftd_prefixes(id = '10.1080')
-ftd_prefixes(id = '10.1080', verbose = TRUE)
 
 # doesn't work
 # ftd_prefixes(id = '10.9999')

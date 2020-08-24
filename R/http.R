@@ -1,5 +1,3 @@
-ft_base <- function() "https://ftdoi.org"
-
 make_ua <- function() {
   paste0("ftdoi/", utils::packageVersion("ftdoi"))
 }
@@ -43,40 +41,4 @@ match_err <- function(code) {
   fxns <- lapply(tmp, function(x) eval(parse(text = x)))
   codes <- vapply(fxns, function(z) z$public_fields$status_code, 1)
   fxns[[which(code == codes)]]
-}
-
-json_parse <- function(x, flatten = TRUE) {
-  jsonlite::fromJSON(x, flatten = flatten)
-}
-
-json_prx <- function(x) {
-  tmp <- jsonlite::fromJSON(x, flatten = TRUE)
-  Map(function(x) if (is.null(x)) NA else x, tmp)
-}
-
-proc_many <- function(x) {
-  tmp <- json_parse(x)
-  # clzs <- vapply(tmp, class, "")
-  # if (any(clzs == "list")) {
-  #   tmp[clzs == "list"] <- lapply(tmp[clzs == "list"], function(z) {
-  #     unlist(
-  #       Map(function(w) if (length(w) > 1) paste0(w, collapse = ",") else w, z)
-  #     )
-  #   })
-  # }
-  if (is.list(tmp$crossref_member)) tmp$crossref_member <- col(tmp$crossref_member)
-  if (is.list(tmp$prefixes)) tmp$prefixes <- col(tmp$prefixes)
-  jnrls <- NULL
-  if (is.list(tmp$journals)) {
-    jnrls <- tibble::as_tibble(
-      data.table::setDF(
-        data.table::rbindlist(tmp$journals, fill=TRUE, use.names=TRUE))
-    )
-    tmp$journals <- NULL
-  }
-  list(data = tibble::as_tibble(tmp), journals = jnrls)
-}
-
-col <- function(x) {
-  unlist(Map(function(w) if (length(w) > 1) paste0(w, collapse = ",") else w, x))
 }
