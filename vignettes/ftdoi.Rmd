@@ -1,7 +1,7 @@
 ---
 title: "ftdoi"
 author: Scott Chamberlain
-date: "2020-08-14"
+date: "2020-08-24"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{ftdoi}
@@ -15,9 +15,17 @@ Retrieve full-text urls on a per publisher basis
 
 Docs: https://docs.ropensci.org/ftdoi/
 
+The role `ftdoi` plays is filling in gaps where other tools fall short. That is, Crossref collates full text links for articles on a voluntary basis, which can be accessed with R using [crminer::crm_links()](https://docs.ropensci.org/crminer/reference/crm_links.html) - but, only some publishers share the links with Crossref, and even those that do may not supply the correct links to articles, and/or the links may get out of date and no longer work at some point. 
+
+There used to be an web API where you could request links for a DOI - nearly all requests to this API were from R - so now the API is gone and `ftdoi` is now the main interface to access these publisher specific article URL patterns. 
+
+The patterns are maintained in a separate GitHub repository at <https://github.com/ropenscilabs/pubpatterns>. If you have a question about a puslishers article URL patterns or want to request one, open an issue in that repository.
+
+## Installation
+
 
 ```r
-remotes::install_github("ropenscilabs/ftdoi")
+remotes::install_github("ropensci/ftdoi")
 ```
 
 
@@ -25,32 +33,168 @@ remotes::install_github("ropenscilabs/ftdoi")
 library(ftdoi)
 ```
 
-## asdff
+## Download publisher "patterns"
 
-asdfasdf
+`ftdoi` works by using metadata for each publisher. To use this package you'll first need to download the publisher patterns, a set of JSON files. These are cached locally; and should be updated whenever there's a new version available. The JSON files are maintained at <https://github.com/ropenscilabs/pubpatterns> - new versions are simply git tags in the `pubpatterns` repository.
 
 
 ```r
-55
-#> [1] 55
+ftd_fetch_patterns()
 ```
 
-## asdff
+## Members
 
-asdfasdf
+You can look at the publisher specific metadata. Each publisher has a Crossref member id, an integer.  You can lookup all publishers. 
 
 
 ```r
-55
-#> [1] 55
+ftd_members()
 ```
 
-## asdff
-
-asdfasdf
+Or if you know a Crossref member ID already, you can lookup by that number.
 
 
 ```r
-55
-#> [1] 55
+ftd_members(1965)
+#> $publisher
+#> [1] "frontiers"
+#> 
+#> $publisher_parent
+#> NULL
+#> 
+#> $crossref_member
+#> [1] 1965
+#> 
+#> $prefixes
+#> [1] "10.3389" "10.4175"
+#> 
+#> $urls
+#> $urls$pdf
+#> [1] "http://journal.frontiersin.org/article/%s/pdf"
+#> 
+#> $urls$xml
+#> [1] "http://journal.frontiersin.org/article/%s/xml/nlm"
+#> 
+#> 
+#> $components
+#> $components$html
+#> NULL
+#> 
+#> $components$doi
+#> $components$doi$regex
+#> [1] ".+"
+#> 
+#> 
+#> 
+#> $use_crossref_links
+#> [1] FALSE
+#> 
+#> $cookies
+#> [1] FALSE
+#> 
+#> $regex
+#> NULL
+#> 
+#> $open_access
+#> [1] TRUE
+#> 
+#> $journals
+#> NULL
+```
+
+## Prefixes
+
+Most publishers have more than one DOI prefix (e.g., `10.1021`). There's a few DOI prefixes that have their own patterns because they may use different URL patterns for articles than the rest of the papers for the publisher.
+
+
+```r
+x <- ftd_prefixes()
+vapply(x, "[[", "", "publisher")
+#> [1] "cogent" "ssrn"
+```
+
+## Get urls
+
+The main function you'll want to use in this package is `ftd_doi()`
+
+eLife
+
+
+```r
+elife <- ftd_doi(doi = c('10.7554/eLife.07404', '10.7554/eLife.07405'))
+lapply(elife, "[[", "links")
+#> [[1]]
+#> [[1]][[1]]
+#> [[1]][[1]]$url
+#> [1] "https://elifesciences.org/content/4/e07404-download.pdf"
+#> 
+#> [[1]][[1]]$`content-type`
+#> [1] "application/pdf"
+#> 
+#> 
+#> [[1]][[2]]
+#> [[1]][[2]]$url
+#> [1] "https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife07404.xml"
+#> 
+#> [[1]][[2]]$`content-type`
+#> [1] "application/xml"
+#> 
+#> 
+#> 
+#> [[2]]
+#> [[2]][[1]]
+#> [[2]][[1]]$url
+#> [1] "https://elifesciences.org/content/4/e07405-download.pdf"
+#> 
+#> [[2]][[1]]$`content-type`
+#> [1] "application/pdf"
+#> 
+#> 
+#> [[2]][[2]]
+#> [[2]][[2]]$url
+#> [1] "https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife07405.xml"
+#> 
+#> [[2]][[2]]$`content-type`
+#> [1] "application/xml"
+```
+
+pensoft
+
+
+```r
+pensoft <- ftd_doi(doi = c('10.3897/zookeys.594.8768', '10.3897/mycokeys.54.34571'))
+lapply(pensoft, "[[", "links")
+#> [[1]]
+#> [[1]][[1]]
+#> [[1]][[1]]$url
+#> [1] "https://zookeys.pensoft.net/article/8768/download/pdf/"
+#> 
+#> [[1]][[1]]$`content-type`
+#> [1] "application/pdf"
+#> 
+#> 
+#> [[1]][[2]]
+#> [[1]][[2]]$url
+#> [1] "https://zookeys.pensoft.net/article/8768/download/xml/"
+#> 
+#> [[1]][[2]]$`content-type`
+#> [1] "application/xml"
+#> 
+#> 
+#> 
+#> [[2]]
+#> [[2]][[1]]
+#> [[2]][[1]]$url
+#> [1] "https://mycokeys.pensoft.net/article/34571/download/pdf/"
+#> 
+#> [[2]][[1]]$`content-type`
+#> [1] "application/pdf"
+#> 
+#> 
+#> [[2]][[2]]
+#> [[2]][[2]]$url
+#> [1] "https://mycokeys.pensoft.net/article/34571/download/xml/"
+#> 
+#> [[2]][[2]]$`content-type`
+#> [1] "application/xml"
 ```
