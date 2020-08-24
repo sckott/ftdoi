@@ -15,7 +15,7 @@ Docs: https://docs.ropensci.org/ftdoi/
 
 
 ```r
-remotes::install_github("ropenscilabs/ftdoi")
+remotes::install_github("ropensci/ftdoi")
 ```
 
 
