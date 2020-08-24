@@ -3,7 +3,6 @@
 #' @export
 #' @param id (character) a DOI prefix. Default is `NULL`, which 
 #' gets all
-#' @param ... curl options passed on to [crul::HttpClient]
 #' @examples \dontrun{
 #' ftd_prefixes()
 #' ftd_prefixes(id = '10.1080')
@@ -11,7 +10,7 @@
 #' # doesn't work
 #' # ftd_prefixes(id = '10.9999')
 #' }
-ftd_prefixes <- function(id = NULL, ...) {
+ftd_prefixes <- function(id = NULL) {
   assert(id, "character")
   if (is.null(id)) all_prefixes() else a_prefix(id)
 }

@@ -4,13 +4,11 @@
 \alias{ftd_prefixes}
 \title{Prefixes}
 \usage{
-ftd_prefixes(id = NULL, ...)
+ftd_prefixes(id = NULL)
 }
 \arguments{
 \item{id}{(character) a DOI prefix. Default is \code{NULL}, which
 gets all}
-
-\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Prefixes
