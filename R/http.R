@@ -7,9 +7,7 @@ make_ua <- function() {
 ftd_GET <- function(url, args = list(), ...) {
   cli <- crul::HttpClient$new(
     url = url,
-    # url = ft_base(), 
     headers = list(`User-Agent` = make_ua())
-    #opts = list(...)
   )
   res <- cli$get(query = args)
   errs(res)
