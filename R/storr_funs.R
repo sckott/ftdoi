@@ -11,7 +11,7 @@ prefix_get <- function(doi) {
   tryCatch(ftdoi_doi_prefixes$get(key = doi_prefix(doi)),
     error=function(e) e)
 }
-key_exists <- function(x) !inherits(x, "error") && !is.null(x)
+key_exists <- function(x) !inherits(x, "error") && (!is.null(x) && length(x) > 0) 
 doi_prefix <- function(doi) strsplit(doi, "/")[[1]][1]
 prefix_list_keys <- function() {
   storr_init("_doi_prefixes")

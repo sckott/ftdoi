@@ -1,4 +1,4 @@
-members_need_url <- c("16", "292", "127", "2457", "341", "237", "1968")
+members_need_url <- c("16", "292", "127", "2457", "341", "237", "1968", "8215")
 members_need_issn <- c("2258", "340", "194", "4443")
 members_sim_check <- c("16", "292", "127", "2457")
 pattern_path <- function(id) {

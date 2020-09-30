@@ -59,7 +59,7 @@ pub_company_of_biologists <- function(doi, pat, member, issn, res=NULL) {
     z <- Filter(function(x) grepl(paste0(unlist(x$issn), collapse="|"), issn), pat$journals)[[1]]
     lks <- list(list(
       url = sprintf(z$urls$pdf, res$volume, res$issue, first_page(res$page)),
-      'content-type' = get_ctype(names(pat$urls)[1])
+      'content-type' = get_ctype(names(z$urls)[1])
     ))
     url_update(doi, lks[[1]]$url, lks[[1]]$`content-type` %||% "")
   }
