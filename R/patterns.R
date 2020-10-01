@@ -13,12 +13,12 @@ ftd_fetch_patterns <- function() {
 }
 
 latest_tag <- function() {
-  rel_latest="https://api.github.com/repos/ropenscilabs/pubpatterns/releases/latest"
+  rel_latest="https://api.github.com/repos/sckott/pubpatterns/releases/latest"
   jsonlite::fromJSON(ftd_GET(rel_latest))$tag_name
 }
 latest_tag_url <- function() {
   zip_url_pat=
-  "https://github.com/ropenscilabs/pubpatterns/releases/download/%s/pubpatterns.zip"
+  "https://github.com/sckott/pubpatterns/releases/download/%s/pubpatterns.zip"
   sprintf(zip_url_pat, latest_tag())
 }
 patterns_grab <- function() {

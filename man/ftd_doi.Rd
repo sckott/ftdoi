@@ -84,13 +84,40 @@ ftd_doi(c("10.1098/rspa.2007.1849", "10.1098/rstb.1970.0037",
 ftd_doi("10.1242/jeb.00137")
 ftd_doi(c("10.1242/dev.00905", "10.1242/dev.00915"))
 ftd_doi("10.1242/bio.042192")
-# xxx
-ftd_doi(c())
-# xxx
-ftd_doi(c())
-# xxx
-ftd_doi(c())
-# xxx
-ftd_doi(c())
+# Hindawi
+ftd_doi("10.1155/2017/4724852")
+ftd_doi("10.1155/2020/6914878")
+# IOP
+ftd_doi("10.1088/2043-6262/7/2/025018")
+# AAAS
+# z <- rcrossref::cr_members(221, works=TRUE)
+# dois <- z$data$doi
+# ftd_doi(dois[12:20])
+# Oxford
+# z <- rcrossref::cr_members(286, works=TRUE)
+# dois <- z$data$doi
+ftd_doi(dois[1:5])
+# CDC
+# z <- rcrossref::cr_members(1822, works=TRUE)
+# dois <- z$data$doi
+ftd_doi("10.3201/eid1209.051606")
+ftd_doi(dois[1:5])
+# Elsevier
+## a cc-by3 paper
+ftd_doi(doi="10.1016/j.jsamd.2019.02.002")
+ftd_doi(c("10.1016/j.nuclphysbps.2015.09.127", "10.1016/j.nuclphysb.2011.09.011", 
+ "10.1016/j.eurpolymj.2018.07.009", "10.1016/j.jsamd.2019.02.002",
+ "10.1016/j.physletb.2015.11.072"))
+# American Society for Microbiology
+ftd_doi(doi="10.1128/jcm.39.12.4344-4348.2001")
+ftd_doi(c("10.1128/jcm.42.6.2623-2628.2004",
+  "10.1128/jcm.42.9.4147-4153.2004",
+  "10.1128/jcm.40.10.3826-3830.2002", "10.1128/mcb.11.10.4966",
+  "10.1128/cmr.7.1.14", "10.1128/jcm.41.3.943-947.2003"))
+# Walter de Gruyter
+ftd_doi(doi="10.1515/geo-2020-0173")
+ftd_doi(doi="10.1515/ci.2013.35.2.19b")
+ftd_doi(c("10.1515/geo-2020-0173", "10.1515/ci.2013.35.2.bm", 
+  "10.2478/jvetres-2020-0058", "10.2478/acmy-2020-0008"))
 }
 }
