@@ -6,7 +6,7 @@ members_need_url <- c(
 members_need_issn <- c("2258", "340", "194", "4443")
 members_sim_check <- c("16", "292", "127", "2457", "286")
 pattern_path <- function(id) {
-  file.path(ftdoi_cache$cache_path_get(), member_map[[id]]$path)
+  file.path(ftdoi_cache$cache_path_get(), "patterns", member_map[[id]]$path)
 }
 pattern_member <- function(doi, member, issn, res = NULL) {
   pub <- switch(member,
@@ -56,19 +56,19 @@ get_ctype <- function(x) {
 }
 murl <- function(x) file.path("https://api.crossref.org/members", x)
 iurl <- function(x) {
-  if (is.null(x) || !nzchar(x)) return(NULL)
+  if (is.null(x) || !nzchar(x)) return(NA_character_)
   x <- strsplit(x, ",")[[1]][1]
   file.path("https://api.crossref.org/journals", x)
 }
 make_links <- function(doi, z, regex) {
   out = list()
   for (i in seq_along(z)) {
-    out[[i]] <- list(
+    out[[i]] <- data.frame(
       url = sprintf(z[[i]], strextract(doi, regex, perl=TRUE)),
-      'content-type' = get_ctype(names(z)[i])
+      content_type = get_ctype(names(z)[i])
     )
   }
-  return(out)
+  return(do.call(rbind, out))
 }
 make_links_no_regex <- function(urls, ctypes) {
   stopifnot(length(urls) == length(ctypes))

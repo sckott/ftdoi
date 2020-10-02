@@ -38,7 +38,27 @@ pluck <- function(x, y, type = "") {
   unname(vapply(x, "[[", type, y))
 }
 links2df <- function(x) {
-  lks <- apply(x, 1, as.list)
-  lapply(lks, function(w) stats::setNames(w, c("url", "content-type")))
+  # lks <- apply(x, 1, as.list)
+  # lapply(lks, function(w) stats::setNames(w, c("url", "content_type")))
+  stats::setNames(x, c("url","content_type"))
 }
-
+first_page <- function(x) strsplit(x, "-")[[1]][1]
+fxn_pub <- function(pub) publisher_funs[[pub]]
+to_df <- function(doi, pat, member, issn, lks) {
+  data.frame(doi = doi, lks, issn = issn %||% NA_character_,
+    member_name = pat$publisher, member_url = murl(member))
+}
+is_doi <- function(x) grepl("[0-9]+\\.[0-9]+/.+", x)
+check_dois <- function(x) {
+  stopifnot(inherits(x, "list") || inherits(x, "character"))
+  x <- vapply(x, utils::URLdecode, "")
+  res <- vapply(x, is_doi, logical(1))
+  if (all(res)) return(TRUE)
+  stop("These are probably not DOIs:\n\n", paste0(names(res[!res]), "\n"),
+    call. = FALSE)
+}
+rbl <- function(x) {
+  (data.table::setDF(
+    data.table::rbindlist(x, use.names = TRUE, fill = TRUE)
+  ))
+}

@@ -16,7 +16,7 @@ ftd_GET_zip <- function(url, ...) {
   ftdoi_cache$mkdir()
   con <- crul::HttpClient$new(url = url, opts = list(...))
   res <- con$get(
-    disk = file.path(ftdoi_cache$cache_path_get(), "pubpatterns.zip"))
+    disk = file.path(ftdoi_cache$cache_path_get(), "patterns/pubpatterns.zip"))
   res$raise_for_status()
 }
 

@@ -28,6 +28,7 @@ ftd_doi(doi = '10.3897/subtbiol.13.6719')
 ftd_doi(doi = '10.1371/journal.pgen.1006546')
 ftd_doi(c('10.1371/journal.pgen.1006546', '10.1371/journal.pbio.1001809'))
 # mdpi
+ftd_doi('10.3390/ani4010082')
 ftd_doi(doi = c('10.3390/ani4010082', "10.3390/ijms19040965",
   "10.3390/rs9010083"))
 # frontiers
@@ -56,6 +57,7 @@ ftd_doi(doi = c("10.1371/journal.pgen.1006546","10.1159/000086754"))
 ftd_doi(doi = '10.1134/s1063784215120075')
 # Instituto de Investigaciones Filologicas
 ftd_doi(doi = '10.1016/s0185-3082(14)70398-0')
+ftd_doi(c('10.1016/s0185-2574(13)71376-5', '10.19130/iifl.nt.1997.15.0.650'))
 # Sage
 ftd_doi(doi = '10.1177/0267659117690248')
 ftd_doi('10.1177/002193470003000403')
@@ -93,15 +95,18 @@ ftd_doi("10.1088/2043-6262/7/2/025018")
 # z <- rcrossref::cr_members(221, works=TRUE)
 # dois <- z$data$doi
 # ftd_doi(dois[12:20])
+# ftd_doi(dois[2])
+ftd_doi("10.1126/science.276.5312.548")
 # Oxford
 # z <- rcrossref::cr_members(286, works=TRUE)
 # dois <- z$data$doi
-ftd_doi(dois[1:5])
+# ftd_doi(dois[1:5])
+ftd_doi("10.1016/s0895-7061(01)02279-8")
 # CDC
 # z <- rcrossref::cr_members(1822, works=TRUE)
 # dois <- z$data$doi
+# ftd_doi(dois[1:5])
 ftd_doi("10.3201/eid1209.051606")
-ftd_doi(dois[1:5])
 # Elsevier
 ## a cc-by3 paper
 ftd_doi(doi="10.1016/j.jsamd.2019.02.002")
@@ -112,8 +117,10 @@ ftd_doi(c("10.1016/j.nuclphysbps.2015.09.127", "10.1016/j.nuclphysb.2011.09.011"
 ftd_doi(doi="10.1128/jcm.39.12.4344-4348.2001")
 ftd_doi(c("10.1128/jcm.42.6.2623-2628.2004",
   "10.1128/jcm.42.9.4147-4153.2004",
-  "10.1128/jcm.40.10.3826-3830.2002", "10.1128/mcb.11.10.4966",
-  "10.1128/cmr.7.1.14", "10.1128/jcm.41.3.943-947.2003"))
+  "10.1128/jcm.40.10.3826-3830.2002", 
+  "10.1128/jcm.41.3.943-947.2003"))
+## some DOIs we just can't easily make URLs for, returns NA
+ftd_doi(c("10.1128/mcb.11.10.4966", "10.1128/cmr.7.1.14"))
 # Walter de Gruyter
 ftd_doi(doi="10.1515/geo-2020-0173")
 ftd_doi(doi="10.1515/ci.2013.35.2.19b")

@@ -6,6 +6,7 @@
 #' @importFrom utils unzip
 #' @importFrom storr storr_rds
 #' @importFrom rcrossref cr_works
+#' @importFrom data.table rbindlist setDF
 #' @name ftdoi-package
 #' @aliases ftdoi
 #' @docType package

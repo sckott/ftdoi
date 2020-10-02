@@ -1,7 +1,7 @@
 Package: ftdoi
 Title: Retrieve Full-Text URLs on a per Publisher Basis
 Description: Retrieve full-text urls on a per publisher basis.
-Version: 0.0.3.92
+Version: 0.0.4.91
 Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 License: MIT + file LICENSE
@@ -16,11 +16,10 @@ Imports:
     jsonlite,
     crul,
     fauxpas,
-    data.table,
-    tibble,
     hoardr,
     storr,
-    rcrossref
+    rcrossref,
+    data.table
 Suggests:
     testthat,
     knitr,

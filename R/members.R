@@ -17,13 +17,14 @@ ftd_members <- function(id = NULL) {
 
 all_members <- function(id) {
   paths <- vapply(member_map, "[[", "", "path")
-  lapply(file.path(ftdoi_cache$cache_path_get(), paths), jsonlite::fromJSON)
+  lapply(file.path(ftdoi_cache$cache_path_get(), "patterns", paths),
+    jsonlite::fromJSON)
 }
 a_member <- function(id) {
   x <- member_map[as.character(id)]
   if (is.null(x[[1]])) 
     stop('not a Crossref member or not supported yet', call.=FALSE)
-  path <- file.path(ftdoi_cache$cache_path_get(), x[[1]]$path)
+  path <- file.path(ftdoi_cache$cache_path_get(), "patterns", x[[1]]$path)
   if (!file.exists(path)) stop(paste(path, ' does not exist'), call.=FALSE)
   jsonlite::fromJSON(path)
 }
