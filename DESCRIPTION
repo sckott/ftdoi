@@ -8,7 +8,7 @@ License: MIT + file LICENSE
 URL: https://github.com/ropensci/ftdoi
 BugReports: https://github.com/ropensci/ftdoi/issues
 LazyLoad: yes
-LazyData: true
+LazyData: yes
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Language: en-US
