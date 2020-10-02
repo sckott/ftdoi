@@ -30,5 +30,7 @@ df3 <- mutate(df2, prefixes = strsplit(prefixes, ", ")) %>%
 
 write_csv(df3, "crossref_member_prefix.csv")
 crossref_member_prefix <- df3
-save(crossref_member_prefix, file = "data/crossref_member_prefix.RData",
-  version = 2)
+usethis::use_data(crossref_member_prefix, crossref_member_prefix,
+  internal = TRUE, overwrite = TRUE)
+# save(crossref_member_prefix, file = "data/crossref_member_prefix.RData",
+#   version = 2)
