@@ -1,4 +1,4 @@
-members_need_url <- c(
+members_need_crossref <- c(
   "16", "292", "127", "2457", "341", "237",
   "1968", "8215", "98", "221", "286", "1822",
   "78", "235", "374"
@@ -8,6 +8,7 @@ members_sim_check <- c("16", "292", "127", "2457", "286")
 pattern_path <- function(id) {
   file.path(ftdoi_cache$cache_path_get(), "patterns", member_map[[id]]$path)
 }
+fxn_pub <- function(pub) publisher_funs[[pub]]
 pattern_member <- function(doi, member, issn, res = NULL) {
   pub <- switch(member,
     "4374" = "elife",
@@ -41,10 +42,12 @@ pattern_member <- function(doi, member, issn, res = NULL) {
     "1822" = "cdc",
     "78" = "elsevier",
     "235" = "american_society_for_microbiology",
-    "374" = "de_gruyter"
+    "374" = "de_gruyter",
+    "246" = "biorxiv"
   )
   pat <- jsonlite::fromJSON(pattern_path(member), FALSE)
-  fxn_pub(pub)(doi, pat, member, issn, res)
+  fun <- eval(parse(text=paste0("pub_", pub)))
+  fun(doi, pat, member, issn, res)
 }
 
 get_ctype <- function(x) {

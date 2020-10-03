@@ -7,6 +7,7 @@
 #' @importFrom storr storr_rds
 #' @importFrom rcrossref cr_works
 #' @importFrom data.table rbindlist setDF
+#' @importFrom xml2 read_xml
 #' @name ftdoi-package
 #' @aliases ftdoi
 #' @docType package

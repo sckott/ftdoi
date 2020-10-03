@@ -114,18 +114,20 @@
 #' ftd_doi(doi="10.1515/ci.2013.35.2.19b")
 #' ftd_doi(c("10.1515/geo-2020-0173", "10.1515/ci.2013.35.2.bm", 
 #'   "10.2478/jvetres-2020-0058", "10.2478/acmy-2020-0008"))
+#' # Biorxiv
+#' ftd_doi(doi='10.1101/012476')
 #' }
 ftd_doi <- function(doi, ...) {
   assert(doi, "character")
   check_dois(doi)
   rbl(lapply(doi, function(d) {
-    df <- NULL
+    df <- data.frame(foo=NA)
     w <- prefix_get(d)
     if (inherits(w, "error")) w <- prefix_local(d)
     if (
       (!key_exists(w) && no_http_needed(w)) ||
       (
-        (if ("member" %in% names(w)) w$member %in% members_need_url) %||% FALSE &&
+        (if ("member" %in% names(w)) w$member %in% members_need_crossref) %||% FALSE &&
         !url_exists(d)
       ) ||
       (

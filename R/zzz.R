@@ -16,7 +16,7 @@ assert <- function(x, y) {
   }
 }
 `%||%` <- function (x, y) if (is.null(x) || is.na(x)) y else x
-no_http_needed <- function(x) !x$member %in% members_need_url
+no_http_needed <- function(x) !x$member %in% members_need_crossref
 prefix_local <- function(doi) {
   prefix <- doi_prefix(doi)
   id <- crossref_member_prefix[crossref_member_prefix$prefixes %in% prefix,]$id
@@ -43,7 +43,6 @@ links2df <- function(x) {
   stats::setNames(x, c("url","content_type"))
 }
 first_page <- function(x) strsplit(x, "-")[[1]][1]
-fxn_pub <- function(pub) publisher_funs[[pub]]
 to_df <- function(doi, pat, member, issn, lks) {
   data.frame(doi = doi, lks, issn = issn %||% NA_character_,
     member_name = pat$publisher, member_url = murl(member))

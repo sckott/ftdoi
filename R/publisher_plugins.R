@@ -49,7 +49,7 @@ fun_hindawi <- function(doi, pat, member, issn, res) {
   data.frame(url = use$URL, content_type = use$content.type)
 }
 fun_aaas <- function(doi, pat, member, issn, res) {
-  lks <- data.frame(url = fat_cat_link(doi), content_type = "pdf")
+  lks <- data.frame(url = fat_cat_link(doi), content_type = "application/pdf")
   if (is.na(lks$url)) {
     z <- Filter(function(x) grepl(paste0(unlist(x$issn), collapse="|"), issn), pat$journals)[[1]]
     if (grepl("2375-2548", issn)) {
@@ -58,7 +58,7 @@ fun_aaas <- function(doi, pat, member, issn, res) {
       last_part = strsplit(res$page, "-")[[1]][1]
     }
     url = sprintf(z$urls$pdf, res$volume, res$issue, last_part)
-    lks <- data.frame(url = url, content_type = "pdf")
+    lks <- data.frame(url = url, content_type = "application/pdf")
   }
   return(lks)
 }
@@ -69,7 +69,7 @@ fun_cdc <- function(doi, pat, member, issn, res) {
   last_part <- paste(substring(doi_part, 1, 2),
     substring(doi_part, 3, nchar(doi_part)), sep="_")
   url <- sprintf(pat$urls$pdf, year, last_part)
-  data.frame(url = url, content_type = "pdf")
+  data.frame(url = url, content_type = "application/pdf")
 }
 fun_elsevier <- function(doi, pat, member, issn, res) {
   # FIXME: see alternative-id bit in pubpatternsapi
@@ -85,7 +85,7 @@ fun_american_society_for_microbiology <- function(doi, pat, member, issn, res) {
   # if (length(other_bit) == 0) other_bit <- strextract(strsplit(doi, "/")[[1]][2], "[0-9]+$")
   if (length(other_bit) == 0) return(data.frame(url = NA_character_, content_type = "pdf"))
   lk <- sprintf(url, journal_bit, vol, iss, other_bit)
-  data.frame(url = lk, content_type = "pdf")
+  data.frame(url = lk, content_type = "application/pdf")
 }
 fun_de_gruyter <- function(doi, pat, member, issn, res) {
   url <- res$link[[1]][res$link[[1]]$intended.application == "similarity-checking", ]$URL
@@ -105,7 +105,16 @@ fun_de_gruyter <- function(doi, pat, member, issn, res) {
       url <- file.path(base, jabbrev, vol, iss, last_part)
     }
   }
-  data.frame(url = url, content_type = "pdf")
+  data.frame(url = url, content_type = "application/pdf")
+}
+fun_biorxiv <- function(doi, pat, member, issn, res) {
+  out <- crul::HttpClient$new(file.path("https://doi.org", doi),
+    opts = list(followlocation=TRUE))$get()
+  html <- xml2::read_html(out$parse("UTF-8"))
+  url <- xml2::xml_attr(
+    xml2::xml_find_all(html, '//meta[@name="citation_pdf_url"]'),
+    "content")
+  data.frame(url = url, content_type = "application/pdf")
 }
 
 # factories
@@ -168,14 +177,16 @@ pub_elsevier <- pub_factory4(fun_elsevier)
 pub_american_society_for_microbiology <- 
   pub_factory4(fun_american_society_for_microbiology)
 pub_de_gruyter <- pub_factory4(fun_de_gruyter)
+pub_biorxiv <- pub_factory4(fun_biorxiv)
 
-publishers <- c("elife", "pensoft", "plos", "mdpi", "frontiers",
-  "informa", "thieme", "peerj", "aps", "rsc", "karger", "transtech",
-  "emerald", "pleiades", "iif", "sage", "spie", "pnas", "springer", 
-  "american_society_of_clinical_oncology", "aip", "acs", 
-  "the_royal_society", "hindawi", "iop", "company_of_biologists", 
-  "aaas", "oxford", "cdc", "elsevier",
-  "american_society_for_microbiology", "de_gruyter")
-publisher_funs <- stats::setNames(lapply(publishers, function(x) {
-  eval(parse(text=paste0("pub_", x)))
-}), publishers)
+# publishers <- c("elife", "pensoft", "plos", "mdpi", "frontiers",
+#   "informa", "thieme", "peerj", "aps", "rsc", "karger", "transtech",
+#   "emerald", "pleiades", "iif", "sage", "spie", "pnas", "springer", 
+#   "american_society_of_clinical_oncology", "aip", "acs", 
+#   "the_royal_society", "hindawi", "iop", "company_of_biologists", 
+#   "aaas", "oxford", "cdc", "elsevier",
+#   "american_society_for_microbiology", "de_gruyter")
+# publishers <- 
+# publisher_funs <- stats::setNames(lapply(publishers, function(x) {
+#   eval(parse(text=paste0("pub_", x)))
+# }), publishers)
