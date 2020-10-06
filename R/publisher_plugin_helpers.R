@@ -8,7 +8,7 @@ members_sim_check <- c("16", "292", "127", "2457", "286")
 pattern_path <- function(id) {
   file.path(ftdoi_cache$cache_path_get(), "patterns", member_map[[id]]$path)
 }
-fxn_pub <- function(pub) publisher_funs[[pub]]
+# fxn_pub <- function(pub) publisher_funs[[pub]]
 pattern_member <- function(doi, member, issn, res = NULL) {
   pub <- switch(member,
     "4374" = "elife",
