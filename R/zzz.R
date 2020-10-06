@@ -17,11 +17,6 @@ assert <- function(x, y) {
 }
 `%||%` <- function (x, y) if (is.null(x) || is.na(x)) y else x
 no_http_needed <- function(x) !x$member %in% members_need_crossref
-prefix_local <- function(doi) {
-  prefix <- doi_prefix(doi)
-  id <- crossref_member_prefix[crossref_member_prefix$prefixes %in% prefix,]$id
-  list(prefix = prefix, member = as.character(id))
-}
 make_doi_str <- function(x) {
   sprintf("doi:(\"%s\")", paste0(x, collapse = "\" OR \""))
 }

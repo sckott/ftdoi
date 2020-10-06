@@ -23,12 +23,12 @@ df <- dplyr::bind_rows(lapply(out, "[[", "data"))
 length(df$id)
 length(unique(df$id))
 
-df2 <- select(df, id, prefixes)
+df2 <- select(df, id, prefixes, primary_name)
 df3 <- mutate(df2, prefixes = strsplit(prefixes, ", ")) %>% 
   unnest(prefixes)
 # %>% .$prefixes2 %>% .[1:100]
 
-write_csv(df3, "crossref_member_prefix.csv")
+# write_csv(df3, "crossref_member_prefix.csv")
 crossref_member_prefix <- df3
 usethis::use_data(crossref_member_prefix, crossref_member_prefix,
   internal = TRUE, overwrite = TRUE)
