@@ -159,7 +159,7 @@ pub_factory4 <- function(fun_not_cached) {
   }
 }
 
-pub_frontiers <- pub_informa <- pub_elife <- pub_emerald <-
+pub_frontiers <- pub_informa <- pub_emerald <-
   pub_pleiades <- pub_sage <- pub_spie <- pub_springer <- 
   pub_american_society_of_clinical_oncology <- pub_aip <- 
   pub_acs <- pub_the_royal_society <- pub_iop <- pub_factory1()
@@ -179,7 +179,7 @@ pub_american_society_for_microbiology <-
 pub_de_gruyter <- pub_factory4(fun_de_gruyter)
 pub_biorxiv <- pub_factory4(fun_biorxiv)
 
-# publishers <- c("elife", "pensoft", "plos", "mdpi", "frontiers",
+# publishers <- c("pensoft", "plos", "mdpi", "frontiers",
 #   "informa", "thieme", "peerj", "aps", "rsc", "karger", "transtech",
 #   "emerald", "pleiades", "iif", "sage", "spie", "pnas", "springer", 
 #   "american_society_of_clinical_oncology", "aip", "acs", 

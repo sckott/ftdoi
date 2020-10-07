@@ -51,3 +51,8 @@ needs_update <- function(lt, tag, manifest) {
   }
   return(TRUE)
 }
+has_patterns <- function() {
+  ppath <- file.path(ftdoi_cache$cache_path_get(), "patterns")
+  jsonfiles <- list.files(ppath, pattern = ".json")
+  dir.exists(ppath) && length(jsonfiles) > 10
+}

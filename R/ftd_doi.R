@@ -4,9 +4,6 @@
 #' @param doi (character) one or more DOIs. required
 #' @param ... curl options passed on to [crul::verb-GET]
 #' @examples \dontrun{
-#' # elife
-#' ftd_doi(doi = '10.7554/eLife.07404')
-#' ftd_doi(doi = '10.7554/eLife.07405')
 #' # pensoft
 #' ftd_doi(doi = '10.3897/zookeys.594.8768')
 #' ftd_doi(doi = '10.3897/mycokeys.54.34571')
@@ -120,10 +117,12 @@
 ftd_doi <- function(doi, ...) {
   assert(doi, "character")
   check_dois(doi)
+  if (!has_patterns()) suppressMessages(ftd_fetch_patterns())
   rbl(lapply(doi, function(d) {
     df <- data.frame(foo=NA)
     w <- prefix_get(d)
     if (inherits(w, "error")) w <- prefix_local(d)
+    have_pattern(w$member)
     if (
       (!key_exists(w) && no_http_needed(w)) ||
       (

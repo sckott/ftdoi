@@ -16,9 +16,6 @@ DOI
 }
 \examples{
 \dontrun{
-# elife
-ftd_doi(doi = '10.7554/eLife.07404')
-ftd_doi(doi = '10.7554/eLife.07405')
 # pensoft
 ftd_doi(doi = '10.3897/zookeys.594.8768')
 ftd_doi(doi = '10.3897/mycokeys.54.34571')

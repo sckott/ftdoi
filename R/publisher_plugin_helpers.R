@@ -8,43 +8,44 @@ members_sim_check <- c("16", "292", "127", "2457", "286")
 pattern_path <- function(id) {
   file.path(ftdoi_cache$cache_path_get(), "patterns", member_map[[id]]$path)
 }
-# fxn_pub <- function(pub) publisher_funs[[pub]]
+
+
+mem_list <- list(
+  "2258" = "pensoft",
+  "340" = "plos",
+  "1968" = "mdpi",
+  "1965" = "frontiers",
+  "301" = "informa",
+  "194" = "thieme",
+  "4443" = "peerj",
+  "16" = "aps",
+  "292" = "rsc",
+  "127" = "karger",
+  "2457" = "transtech",
+  "140" = "emerald",
+  "137" = "pleiades",
+  "8215" = "iif",
+  "179" = "sage",
+  "189" = "spie",
+  "341" = "pnas",
+  "297" = "springer",
+  "233" = "american_society_of_clinical_oncology",
+  "317" = "aip",
+  "316" = "acs",
+  "175" = "the_royal_society",
+  "237" = "company_of_biologists",
+  "98" = "hindawi",
+  "266" = "iop",
+  "221" = "aaas",
+  "286" = "oxford",
+  "1822" = "cdc",
+  "78" = "elsevier",
+  "235" = "american_society_for_microbiology",
+  "374" = "de_gruyter",
+  "246" = "biorxiv"
+)
 pattern_member <- function(doi, member, issn, res = NULL) {
-  pub <- switch(member,
-    "4374" = "elife",
-    "2258" = "pensoft",
-    "340" = "plos",
-    "1968" = "mdpi",
-    "1965" = "frontiers",
-    "301" = "informa",
-    "194" = "thieme",
-    "4443" = "peerj",
-    "16" = "aps",
-    "292" = "rsc",
-    "127" = "karger",
-    "2457" = "transtech",
-    "140" = "emerald",
-    "137" = "pleiades",
-    "8215" = "iif",
-    "179" = "sage",
-    "189" = "spie",
-    "341" = "pnas",
-    "297" = "springer",
-    "233" = "american_society_of_clinical_oncology",
-    "317" = "aip",
-    "316" = "acs",
-    "175" = "the_royal_society",
-    "237" = "company_of_biologists",
-    "98" = "hindawi",
-    "266" = "iop",
-    "221" = "aaas",
-    "286" = "oxford",
-    "1822" = "cdc",
-    "78" = "elsevier",
-    "235" = "american_society_for_microbiology",
-    "374" = "de_gruyter",
-    "246" = "biorxiv"
-  )
+  pub <- mem_list[[member]]
   pat <- jsonlite::fromJSON(pattern_path(member), FALSE)
   fun <- eval(parse(text=paste0("pub_", pub)))
   fun(doi, pat, member, issn, res)
@@ -80,4 +81,11 @@ make_links_no_regex <- function(urls, ctypes) {
     out[[i]] <- list(url = urls[i], `content-type` = ctypes[i])
   }
   return(out)
+}
+have_pattern <- function(member) {
+  if (is.null(mem_list[[member]])) {
+    stop("member ", member, " is not supported\n",
+    "  open an issue https://github.com/ropensci/ftdoi/issues",
+    call. = FALSE)
+  }
 }
