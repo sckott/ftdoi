@@ -11,10 +11,24 @@ ftd_doi(doi, ...)
 
 \item{...}{curl options passed on to \link[crul:verb-GET]{crul::verb-GET}}
 }
+\value{
+data.frame of rows equal to number of DOIs supplied, with columns:
+\itemize{
+\item doi: the doi
+\item url: url for the article
+\item content_type: content type of the article format
+\item issn: ISSN for the journal containing the DOI
+\item member_name: Crossref member name
+\item member_url: Crossref member url
+}
+}
 \description{
 DOI
 }
 \examples{
+ftd_doi(doi = '10.3389/fmed.2015.00081')
+ftd_doi(doi = '10.1134/s1063784215120075')
+
 \dontrun{
 # pensoft
 ftd_doi(doi = '10.3897/zookeys.594.8768')

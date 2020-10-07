@@ -4,9 +4,6 @@
 #' out of date, if some/all are deleted and in need of an update
 #' @export
 #' @return character vector of file paths
-#' @examples \dontrun{
-#' ftd_fetch_patterns()
-#' }
 ftd_fetch_patterns <- function() {
   patterns_grab()
   list.files(file.path(ftdoi_cache$cache_path_get(), "patterns"))

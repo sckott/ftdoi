@@ -3,7 +3,20 @@
 #' @export
 #' @param doi (character) one or more DOIs. required
 #' @param ... curl options passed on to [crul::verb-GET]
-#' @examples \dontrun{
+#' @return data.frame of rows equal to number of DOIs supplied, with columns:
+#' 
+#' - doi: the doi
+#' - url: url for the article
+#' - content_type: content type of the article format
+#' - issn: ISSN for the journal containing the DOI
+#' - member_name: Crossref member name
+#' - member_url: Crossref member url
+#' 
+#' @examples 
+#' ftd_doi(doi = '10.3389/fmed.2015.00081')
+#' ftd_doi(doi = '10.1134/s1063784215120075')
+#' 
+#' \dontrun{
 #' # pensoft
 #' ftd_doi(doi = '10.3897/zookeys.594.8768')
 #' ftd_doi(doi = '10.3897/mycokeys.54.34571')

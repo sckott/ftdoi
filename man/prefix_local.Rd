@@ -15,3 +15,6 @@ a named list with: prefix, member, name
 \description{
 prefix local
 }
+\examples{
+prefix_local('10.3390/ani4010082')
+}

@@ -14,11 +14,15 @@
 #' @keywords package
 NULL
 
-#' adsfadfs
-#'
-#' asdfdsf
+#' Local cache of metadata on Crossref members
 #'
 #' @format A data frame with 576 rows and 5 variables
+#' 
+#' @details with columns:
+#' 
+#' - id: the Crossref publisher member identifier
+#' - prefixes: DOI prefixes for the publisher
+#' - primary_name: the Crossref publisher member name
 #'
 #' @name crossref_member_prefix
 #' @docType data

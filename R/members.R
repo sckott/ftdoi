@@ -3,7 +3,16 @@
 #' @export
 #' @param id (character) a Crossref member ID. Default is `NULL` which
 #' gets all members
-#' @examples \dontrun{
+#' @examples 
+#' ftdoi_cache$cache_path_set(path="foo", type="tempdir")
+#' ftdoi_cache
+#' ftd_fetch_patterns()
+#' z <- list.files(file.path(ftdoi_cache$cache_path_get(), "patterns"))
+#' if (length(z)) {
+#'   ftd_members(221)
+#' }
+#' 
+#' \dontrun{
 #' ftd_members()
 #' ftd_members(221)
 #' ftd_members(1965)

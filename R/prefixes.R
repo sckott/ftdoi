@@ -3,7 +3,17 @@
 #' @export
 #' @param id (character) a DOI prefix. Default is `NULL`, which 
 #' gets all
-#' @examples \dontrun{
+#' @return named list of details of the publisher for the DOI prefix
+#' @examples
+#' ftdoi_cache$cache_path_set(path="foo", type="tempdir")
+#' ftdoi_cache
+#' ftd_fetch_patterns()
+#' z <- list.files(file.path(ftdoi_cache$cache_path_get(), "patterns"))
+#' if (length(z)) {
+#'   ftd_prefixes(id = '10.1080')
+#' }
+#' 
+#' \dontrun{
 #' ftd_prefixes()
 #' ftd_prefixes(id = '10.1080')
 #' 

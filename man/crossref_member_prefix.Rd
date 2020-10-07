@@ -3,11 +3,19 @@
 \docType{data}
 \name{crossref_member_prefix}
 \alias{crossref_member_prefix}
-\title{adsfadfs}
+\title{Local cache of metadata on Crossref members}
 \format{
 A data frame with 576 rows and 5 variables
 }
 \description{
-asdfdsf
+Local cache of metadata on Crossref members
+}
+\details{
+with columns:
+\itemize{
+\item id: the Crossref publisher member identifier
+\item prefixes: DOI prefixes for the publisher
+\item primary_name: the Crossref publisher member name
+}
 }
 \keyword{data}

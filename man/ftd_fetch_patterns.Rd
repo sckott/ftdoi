@@ -13,8 +13,3 @@ character vector of file paths
 Does various checks to see if patterns files alrady downloaded,
 out of date, if some/all are deleted and in need of an update
 }
-\examples{
-\dontrun{
-ftd_fetch_patterns()
-}
-}
