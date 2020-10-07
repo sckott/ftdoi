@@ -16,3 +16,4 @@ appveyor.yml
 ^CODE_OF_CONDUCT\.md$
 ^codemeta\.json$
 crossref_member_prefix.csv
+^LICENSE\.md$
