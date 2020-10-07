@@ -15,10 +15,6 @@ member_map <- list(
     "name" = "de-gruyter",
     "path" = "de_gruyter.json"
   ),
-  "4374" = list(
-    "name" = "elife",
-    "path" = "elife.json"
-  ),
   "1965" = list(
     "name" = "frontiers",
     "path" = "frontiers.json"
