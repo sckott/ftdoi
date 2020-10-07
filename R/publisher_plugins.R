@@ -178,15 +178,3 @@ pub_american_society_for_microbiology <-
   pub_factory4(fun_american_society_for_microbiology)
 pub_de_gruyter <- pub_factory4(fun_de_gruyter)
 pub_biorxiv <- pub_factory4(fun_biorxiv)
-
-# publishers <- c("pensoft", "plos", "mdpi", "frontiers",
-#   "informa", "thieme", "peerj", "aps", "rsc", "karger", "transtech",
-#   "emerald", "pleiades", "iif", "sage", "spie", "pnas", "springer", 
-#   "american_society_of_clinical_oncology", "aip", "acs", 
-#   "the_royal_society", "hindawi", "iop", "company_of_biologists", 
-#   "aaas", "oxford", "cdc", "elsevier",
-#   "american_society_for_microbiology", "de_gruyter")
-# publishers <- 
-# publisher_funs <- stats::setNames(lapply(publishers, function(x) {
-#   eval(parse(text=paste0("pub_", x)))
-# }), publishers)
