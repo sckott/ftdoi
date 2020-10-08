@@ -18,3 +18,4 @@ appveyor.yml
 crossref_member_prefix.csv
 ^LICENSE\.md$
 vignettes/ftdoi.Rmd
+tests/testthat.R
