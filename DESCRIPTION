@@ -6,7 +6,6 @@ Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 License: MIT + file LICENSE
 URL: https://github.com/ropensci/ftdoi
-    https://docs.ropensci.org/ftdoi/
 BugReports: https://github.com/ropensci/ftdoi/issues
 LazyLoad: yes
 LazyData: yes
