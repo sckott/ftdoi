@@ -76,3 +76,26 @@ storr_create <- function(x) {
 storr_init <- function(x) {
   if (!storr_exists(x)) storr_create(x)
 }
+
+ftdoi_doi_prefixes <- ftdoi_urls <- ftdoi_doi_issn <- NULL
+
+#' Initialize cache folders for ftdoi
+#' @export
+#' @return `NULL`
+ftdoi_cache_init <- function() {
+  if (!is.null(ftdoi_doi_prefixes)) {
+    ftdoi_doi_prefixes <<- storr::storr_rds(
+      file.path(ftdoi_cache$cache_path_get(), "_doi_prefixes"),
+      mangle_key = TRUE)
+  }
+  if (!is.null(ftdoi_urls)) {
+    ftdoi_urls <<- storr::storr_rds(
+      file.path(ftdoi_cache$cache_path_get(), "_urls"),
+      mangle_key = TRUE)
+  }
+  if (!is.null(ftdoi_doi_issn)) {
+    ftdoi_doi_issn <<- storr::storr_rds(
+      file.path(ftdoi_cache$cache_path_get(), "_doi_issn"),
+      mangle_key = TRUE)
+  }
+}

@@ -26,6 +26,10 @@ data.frame of rows equal to number of DOIs supplied, with columns:
 DOI
 }
 \examples{
+ftdoi_cache$cache_path_set(path="foo", type="tempdir")
+ftdoi_cache
+ftdoi_cache_init()
+ftd_fetch_patterns()
 ftd_doi(doi = '10.3389/fmed.2015.00081')
 ftd_doi(doi = '10.1134/s1063784215120075')
 

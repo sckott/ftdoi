@@ -6,6 +6,7 @@
 #' @examples 
 #' ftdoi_cache$cache_path_set(path="foo", type="tempdir")
 #' ftdoi_cache
+#' ftdoi_cache_init()
 #' ftd_fetch_patterns()
 #' z <- list.files(file.path(ftdoi_cache$cache_path_get(), "patterns"))
 #' if (length(z)) {
